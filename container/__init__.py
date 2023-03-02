@@ -27,9 +27,10 @@ class Container(containers.DeclarativeContainer):
         "mab.ThompsonMultiArmedBandit",
     )
 
-    kafka_stream = providers.Singleton(
-        "streamable.KafkaStream",
+    item_stream = providers.Singleton(
+        "streamable.ItemStream",
         updatable=updatable,
+        deletable=deletable,
     )
 
     ttl_connector = providers.Singleton(

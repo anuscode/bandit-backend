@@ -23,19 +23,12 @@ async def master(
     health_servicer: HealthServicer = Provide[Container.health_servicer],
     multi_armed_bandit: ThompsonMultiArmedBandit = Provide[Container.multi_armed_bandit],
     ttl: TTL = Provide[Container.ttl],
-    kafka_stream: Streamable = Provide[Container.kafka_stream],
+    item_stream: Streamable = Provide[Container.item_stream],
     _: Connector = Provide[Container.ttl_connector],
     __: Connector = Provide[Container.mab_connector],
     master_scheduler: AsyncIOScheduler = Provide[Container.master_scheduler],
 ) -> None:
     logger.info("Starting [MASTER] server..")
-
-    logger.info("Retrieving Kafka messages..")
-    contexts = clients.kafka.fetch()
-
-    logger.info("Initializing 'bandits' with retrieved contexts..")
-    for context in contexts:
-        multi_armed_bandit.update(context)
 
     logger.info("Initializing 'ttl' with retrieved contexts..")
     item_ids = multi_armed_bandit.bandits.keys()
@@ -52,7 +45,7 @@ async def master(
 
     logger.debug("Starting service on %s", "0.0.0.0:50051")
 
-    kafka_stream.start()
+    item_stream.start()
     master_scheduler.start()
 
     await master_server.start()

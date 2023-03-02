@@ -1,8 +1,8 @@
 APP_NAME=bandit-backend
-VERSION=1.0.4rc9
-REGION=ap-northeast-2
+VERSION=1.0.1rc1
+REGION=us-east-2
 ECR=533448761297.dkr.ecr.$(REGION).amazonaws.com
-CLUSTER=apple
+CLUSTER=eks-cluster-dev
 CONTEXT=arn:aws:eks:$(REGION):533448761297:cluster/$(CLUSTER)
 DOCKER_REPO="$(ECR)/$(APP_NAME):$(VERSION)"
 

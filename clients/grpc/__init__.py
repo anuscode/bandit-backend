@@ -106,9 +106,7 @@ if __name__ == "__main__":
     import asyncio
 
     async def main():
-        response = await select(
-            "bandit-slave-prod.oheadline.com:443", item_ids=["nQT-umZzJTPJIKX1CL00Vw=="]
-        )
-        print([(x.item_id, x.alpha, x.beta) for x in response.predictions])
+        response = await rank("bandit-slave.dev.trollsoft.io:443")
+        print([x for x in response.predictions])
 
     asyncio.run(main())

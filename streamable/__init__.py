@@ -1,11 +1,14 @@
 import abc
 import asyncio
+import json
+from typing import Dict
 
 import cachetools
 from prometheus_client import Counter
 
 import clients.kafka
 from loggers import logger
+from mab import Context
 from observable import Observable
 
 
@@ -18,10 +21,11 @@ class Streamable(abc.ABC):
         pass
 
 
-class KafkaStream(Streamable, abc.ABC):
-    def __init__(self, updatable: Observable):
+class ItemStream(Streamable, abc.ABC):
+    def __init__(self, updatable: Observable, deletable: Observable):
         super().__init__()
         self._updatable = updatable
+        self._deletable = deletable
         self.kafka_counter_metric = Counter(
             "kafka_messages_total",
             "Count of total kafka messages.",
@@ -32,33 +36,32 @@ class KafkaStream(Streamable, abc.ABC):
         """Publishing 을 시작한다."""
 
         async def implementation():
-            to_context = clients.kafka.to_context
-            async for message in clients.kafka.stream():
+
+            def to_context(x: Dict) -> Context:
+                item_id_ = x["item_id"]
+                value = -1
+                updated_at = x["created_ts"]
+                return Context(item_id_, value, updated_at)
+
+            async for message in clients.kafka.json.consume(topic="item.dev.v1"):
                 try:
-                    message_type = message.get("type")
-                    if message_type == "d":
-                        enter_type = message.get("enter_type", "") or ""
-                        if enter_type and "_list" not in enter_type:
-                            continue
-
-                    message_hash = (
-                        message["user_id"] + message["article_id"] + message["type"]
-                    )
-                    if message_hash in self.cache:
-                        continue
-
-                    self.cache[message_hash] = True
-
-                    context = to_context(message)
-                    await self._updatable.publish(context)
-                    self.kafka_counter_metric.inc()
+                    message = message.value.decode("utf-8")
+                    message = json.loads(message)
+                    if message["event"] in ["update", "create"]:
+                        context = to_context(message["data"])
+                        await self._updatable.publish(context)
+                    elif message["event"] == "delete":
+                        item_id = message["data"]["item_id"]
+                        await self._deletable.publish([item_id])
                 except Exception as e:
                     logger.error(e)
+                finally:
+                    self.kafka_counter_metric.inc()
 
         asyncio.create_task(implementation())
 
 
 __all__ = [
     "Streamable",
-    "KafkaStream",
+    "ItemStream",
 ]

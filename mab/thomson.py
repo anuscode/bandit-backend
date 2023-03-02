@@ -117,7 +117,9 @@ class ThompsonBandit(MAB):
         return Observation(item_id=self.item_id, alpha=self.alpha, beta=self.beta)
 
     def update(self, c: Context):
-        self.contexts.append(c)
+
+        if c.value == -1:
+            return
 
         if c.value == 1:
             nodes = list(self.contexts.iternodes())
@@ -128,11 +130,12 @@ class ThompsonBandit(MAB):
                     break
 
             self._alpha += 1
-
         elif c.value == 0:
             self._beta += 1
         else:
             raise ValueError(f"Invalid context value: {c.value}")
+
+        self.contexts.append(c)
 
         if len(self.contexts) > self.pool_size:
             context = self.contexts.popleft()

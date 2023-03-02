@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "slave.fullname" . }}
+data:
+  {{ $envfile := printf "configs/.env.k8s.%s" .Values.env }}
+  {{ $file := .Files.Get $envfile | trimSuffix "\n" }}
+  {{- range $line := splitList "\n" $file -}}
+    {{- $kv := splitList "=" $line -}}
+    {{- $k := first $kv -}}
+    {{- if $k }}
+      {{ $k }}: {{ last $kv | quote }}
+    {{- end }}
+  {{- end }}

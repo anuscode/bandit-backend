@@ -1,0 +1,12 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: {{ include "slave.fullname" . }}
+  labels:
+    prometheus: "true"
+spec:
+  selector:
+    matchLabels:
+      {{- include "slave.selectorLabels" . | nindent 8 }}
+  podMetricsEndpoints:
+  - port: http

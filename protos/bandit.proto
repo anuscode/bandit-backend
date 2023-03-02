@@ -1,0 +1,109 @@
+syntax = "proto3";
+
+package grpc.bandit.v1;
+
+service Bandit {
+  rpc get(GetRequest) returns (GetResponse) {}
+  rpc rank (RankRequest) returns (RankResponse) {}
+  rpc select(SelectRequest) returns (SelectResponse) {}
+  rpc samples(SamplesRequest) returns (SamplesResponse) {}
+  rpc betas(BetasRequest) returns (BetasResponse) {}
+  rpc update(UpdateRequest) returns (UpdateResponse) {}
+  rpc delete(DeleteRequest) returns (DeleteResponse) {}
+}
+
+message Prediction {
+  string item_id = 1;
+  float score = 2;
+  int32 alpha = 4;
+  int32 beta = 5;
+}
+
+// Get
+message GetRequest {
+  string item_id = 1;
+  bool explorable = 2;
+}
+
+message GetResponse {
+  bool success = 1;
+  string error = 2;
+  Prediction prediction = 3;
+}
+
+// Search
+message RankRequest {
+  int32 count = 1;
+  bool explorable = 2;
+}
+
+message RankResponse {
+  bool success = 1;
+  string error = 2;
+  repeated Prediction predictions = 3;
+}
+
+// Sample
+message SelectRequest {
+  repeated string item_ids = 1;
+  bool explorable = 2;
+  optional bool debug = 3;
+  optional string user_id = 4;
+}
+
+message SelectResponse {
+  bool success = 1;
+  string error = 2;
+  repeated Prediction predictions = 3;
+}
+
+
+// Sample
+message SamplesRequest {
+  repeated string item_ids = 1;
+  bool explorable = 2;
+  optional bool debug = 3;
+  optional string user_id = 4;
+}
+
+message SamplesResponse {
+  bool success = 1;
+  string error = 2;
+  repeated Prediction predictions = 3;
+}
+
+// Beta
+message BetasRequest {
+  repeated string item_ids = 1;
+  bool explorable = 2;
+  optional bool debug = 3;
+  optional string user_id = 4;
+}
+
+message BetasResponse {
+  bool success = 1;
+  string error = 2;
+  repeated Prediction predictions = 3;
+}
+
+// Update
+message UpdateRequest {
+  string item_id = 1;
+  float value = 2;
+  float updated_at = 3;
+}
+
+message UpdateResponse {
+  bool success = 1;
+  string error = 2;
+}
+
+// Delete
+message DeleteRequest {
+  string item_id = 1;
+}
+
+message DeleteResponse {
+  bool success = 1;
+  bool error = 2;
+}

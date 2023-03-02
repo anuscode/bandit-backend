@@ -1,0 +1,226 @@
+# MASTER
+master:
+
+  replicaCount: 1
+
+  image:
+    repository: ""
+    pullPolicy: Always
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: latest
+    env:
+      - name: STAGE
+        value: prod
+      - name: ROLE
+        value: MASTER
+      - name: SASL_USERNAME
+        value: "JICWYCUM5HONLR6U"
+      - name: SASL_PASSWORD
+        value: "E8lPXuDH3daJbIjeFQBzO7BljKVLRzWvDVP9GJiOqdrimaNP+nkUCRqgZxQuTN3q"
+      - name: HTTP_PORT
+        value: "80"
+
+  imagePullSecrets: []
+  nameOverride: ""
+  fullnameOverride: ""
+
+  serviceAccount:
+    # Specifies whether a service account should be created
+    create: true
+    # Annotations to add to the service account
+    annotations: {}
+    # The name of the service account to use.
+    # If not set and create is true, a name is generated using the fullname template
+    name: ""
+
+  podAnnotations: {}
+
+  podSecurityContext: {}
+    # fsGroup: 2000
+
+  securityContext: {}
+    # capabilities:
+    #   drop:
+    #   - ALL
+    # readOnlyRootFilesystem: true
+    # runAsNonRoot: true
+    # runAsUser: 1000
+
+  service:
+    type: ClusterIP
+    port:
+      http: 80
+      grpc: 50051
+
+  ingress:
+    enabled: true
+    className: ""
+    annotations:
+      kubernetes.io/ingress.class: alb
+      alb.ingress.kubernetes.io/backend-protocol-version: GRPC
+      alb.ingress.kubernetes.io/scheme: internal
+      alb.ingress.kubernetes.io/target-type: ip
+      alb.ingress.kubernetes.io/subnets: subnet-04e95fc24e721b293,subnet-0ae38edac8d9f8b60,subnet-02f819f897dc114d9
+      alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-2:533448761297:certificate/0a55d6bd-8174-43d0-ae2f-ab84e8087327
+      alb.ingress.kubernetes.io/group.name: internal-main-net
+      alb.ingress.kubernetes.io/healthcheck-path: /grpc.health.v1.Health/Check
+      alb.ingress.kubernetes.io/healthcheck-interval-seconds: '300'
+    hosts:
+      - host: bandit-master-prod.oheadline.com
+        paths:
+          - path: /grpc.bandit.v1.Bandit
+            pathType: Prefix
+            port: 50051
+    tls: []
+    #  - secretName: chart-example-tls
+    #    hosts:
+    #      - chart-example.local
+
+  resources: {}
+    # We usually recommend not to specify default resources and to leave this as a conscious
+    # choice for the user. This also increases chances charts run on environments with little
+    # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    # limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    # requests:
+    #   cpu: 100m
+    #   memory: 128Mi
+
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 80
+    # targetMemoryUtilizationPercentage: 80
+
+  nodeSelector: {}
+
+  tolerations: []
+
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node.kubernetes.io/stage
+            operator: In
+            values:
+            - prod
+          - key: node.kubernetes.io/subnet
+            operator: In
+            values:
+            - public
+# SLAVE
+slave:
+
+  replicaCount: 1
+
+  image:
+    repository: "bandit-backends"
+    pullPolicy: Always
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: latest
+    env:
+      - name: STAGE
+        value: prod
+      - name: ROLE
+        value: SLAVE
+      - name: MASTER_SYNC_INTERVAL_SECONDS
+        value: "15"
+      - name: HTTP_PORT
+        value: "80"
+
+  imagePullSecrets: [ ]
+  nameOverride: ""
+  fullnameOverride: ""
+
+  serviceAccount:
+    # Specifies whether a service account should be created
+    create: true
+    # Annotations to add to the service account
+    annotations: { }
+    # The name of the service account to use.
+    # If not set and create is true, a name is generated using the fullname template
+    name: ""
+
+  podAnnotations: { }
+
+  podSecurityContext: { }
+  # fsGroup: 2000
+
+  securityContext: { }
+    # capabilities:
+    #   drop:
+    #   - ALL
+    # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+  service:
+    type: ClusterIP
+    port:
+      http: 80
+      grpc: 50051
+
+  ingress:
+    enabled: true
+    className: ""
+    annotations:
+      kubernetes.io/ingress.class: alb
+      alb.ingress.kubernetes.io/backend-protocol-version: GRPC
+      alb.ingress.kubernetes.io/scheme: internal
+      alb.ingress.kubernetes.io/target-type: ip
+      alb.ingress.kubernetes.io/subnets: subnet-04e95fc24e721b293,subnet-0ae38edac8d9f8b60,subnet-02f819f897dc114d9
+      alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-2:533448761297:certificate/0a55d6bd-8174-43d0-ae2f-ab84e8087327
+      alb.ingress.kubernetes.io/group.name: internal-main-net
+      alb.ingress.kubernetes.io/healthcheck-path: /grpc.health.v1.Health/Check
+      alb.ingress.kubernetes.io/healthcheck-interval-seconds: '300'
+    hosts:
+      - host: bandit-slave-prod.oheadline.com
+        paths:
+          - path: /grpc.bandit.v1.Bandit
+            pathType: Prefix
+            port: 50051
+    tls: [ ]
+    #  - secretName: chart-example-tls
+    #    hosts:
+    #      - chart-example.local
+
+  resources: { }
+    # We usually recommend not to specify default resources and to leave this as a conscious
+    # choice for the user. This also increases chances charts run on environments with little
+    # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    # limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 5
+    targetCPUUtilizationPercentage: 80
+    # targetMemoryUtilizationPercentage: 80
+
+  nodeSelector: { }
+
+  tolerations: [ ]
+
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node.kubernetes.io/stage
+            operator: In
+            values:
+            - prod
+          - key: node.kubernetes.io/subnet
+            operator: In
+            values:
+            - public

@@ -1,0 +1,75 @@
+from mab import Context
+
+contexts = [
+    [
+        Context(item_id="test_thompson_bandits_1", value=1, updated_at=1666180000 + 0),
+        Context(item_id="test_thompson_bandits_1", value=0, updated_at=1666180000 + 10),
+        Context(item_id="test_thompson_bandits_1", value=0, updated_at=1666180000 + 20),
+    ],
+    [
+        Context(item_id="test_thompson_bandits_2", value=1, updated_at=1666180000 + 40),
+        Context(item_id="test_thompson_bandits_2", value=1, updated_at=1666180000 + 50),
+        Context(item_id="test_thompson_bandits_2", value=0, updated_at=1666180000 + 70),
+    ],
+    [
+        Context(item_id="test_thompson_bandits_3", value=1, updated_at=1666180000 + 80),
+        Context(item_id="test_thompson_bandits_3", value=1, updated_at=1666180000 + 90),
+        Context(item_id="test_thompson_bandits_3", value=0, updated_at=1666180000 + 100),
+        Context(item_id="test_thompson_bandits_3", value=0, updated_at=1666180000 + 110),
+        Context(item_id="test_thompson_bandits_3", value=0, updated_at=1666180000 + 120),
+    ],
+    [
+        Context(item_id="test_thompson_bandits_4", value=0, updated_at=1666180000 + 130),
+        Context(item_id="test_thompson_bandits_4", value=0, updated_at=1666180000 + 140),
+        Context(item_id="test_thompson_bandits_4", value=0, updated_at=1666180000 + 150),
+        Context(item_id="test_thompson_bandits_4", value=0, updated_at=1666180000 + 160),
+        Context(item_id="test_thompson_bandits_4", value=0, updated_at=1666180000 + 170),
+    ],
+    [
+        Context(item_id="test_thompson_bandits_5", value=1, updated_at=1666180000 + 180),
+        Context(item_id="test_thompson_bandits_5", value=0, updated_at=1666180000 + 190),
+        Context(item_id="test_thompson_bandits_5", value=0, updated_at=1666180000 + 200),
+        Context(item_id="test_thompson_bandits_5", value=0, updated_at=1666180000 + 210),
+        Context(item_id="test_thompson_bandits_5", value=0, updated_at=1666180000 + 220),
+    ],
+    [
+        Context(item_id="test_thompson_bandits_6", value=1, updated_at=1666180000 + 180),
+        Context(item_id="test_thompson_bandits_6", value=1, updated_at=1666180000 + 190),
+        Context(item_id="test_thompson_bandits_6", value=0, updated_at=1666180000 + 200),
+        Context(item_id="test_thompson_bandits_6", value=0, updated_at=1666180000 + 210),
+        Context(item_id="test_thompson_bandits_6", value=0, updated_at=1666180000 + 220),
+    ],
+    [
+        Context(item_id="test_thompson_bandits_7", value=1, updated_at=1666180000 + 180),
+        Context(item_id="test_thompson_bandits_7", value=0, updated_at=1666180000 + 190),
+        Context(item_id="test_thompson_bandits_7", value=0, updated_at=1666180000 + 200),
+        Context(item_id="test_thompson_bandits_7", value=0, updated_at=1666180000 + 210),
+        Context(item_id="test_thompson_bandits_7", value=1, updated_at=1666180000 + 220),
+        Context(item_id="test_thompson_bandits_7", value=1, updated_at=1666180000 + 230),
+        Context(item_id="test_thompson_bandits_7", value=0, updated_at=1666180000 + 240),
+        Context(item_id="test_thompson_bandits_7", value=0, updated_at=1666180000 + 250),
+        Context(item_id="test_thompson_bandits_7", value=0, updated_at=1666180000 + 260),
+        Context(item_id="test_thompson_bandits_7", value=1, updated_at=1666180000 + 270),
+    ],
+    [
+        Context(item_id="test_thompson_bandits_8", value=1, updated_at=1666180000 + 180),
+        Context(item_id="test_thompson_bandits_8", value=0, updated_at=1666180000 + 190),
+        Context(item_id="test_thompson_bandits_8", value=0, updated_at=1666180000 + 200),
+        Context(item_id="test_thompson_bandits_8", value=1, updated_at=1666180000 + 210),
+        Context(item_id="test_thompson_bandits_8", value=0, updated_at=1666180000 + 220),
+    ],
+    [
+        Context(item_id="test_thompson_bandits_9", value=1, updated_at=1666180000 + 180),
+        Context(item_id="test_thompson_bandits_9", value=0, updated_at=1666180000 + 190),
+        Context(item_id="test_thompson_bandits_9", value=1, updated_at=1666180000 + 200),
+        Context(item_id="test_thompson_bandits_9", value=1, updated_at=1666180000 + 210),
+        Context(item_id="test_thompson_bandits_9", value=0, updated_at=1666180000 + 220),
+    ],
+    [
+        Context(item_id="test_thompson_bandits_10", value=1, updated_at=1666180000 + 180),
+        Context(item_id="test_thompson_bandits_10", value=0, updated_at=1666180000 + 190),
+        Context(item_id="test_thompson_bandits_10", value=0, updated_at=1666180000 + 200),
+        Context(item_id="test_thompson_bandits_10", value=0, updated_at=1666180000 + 210),
+        Context(item_id="test_thompson_bandits_10", value=0, updated_at=1666180000 + 220),
+    ],
+]

@@ -1,0 +1,9 @@
+.idea
+.pytest_cache
+.DS_Store
+.git
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.credential

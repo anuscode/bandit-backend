@@ -2,8 +2,7 @@ import uuid
 
 from aiokafka import AIOKafkaConsumer
 
-from clients.kafka.configs import settings
-
+from clients.configs import settings
 
 DEFAULT_BOOTSTRAP_SERVER = settings.bootstrap_server
 DEFAULT_TOPIC = settings.topic

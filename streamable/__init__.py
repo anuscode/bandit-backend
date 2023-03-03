@@ -43,7 +43,7 @@ class ItemStream(Streamable, abc.ABC):
                 updated_at = x["created_ts"]
                 return Context(item_id_, value, updated_at)
 
-            async for message in clients.kafka.json.consume(topic="item.dev.v1"):
+            async for message in clients.kafka.item.json.consume(topic="item.dev.v1"):
                 try:
                     message = message.value.decode("utf-8")
                     message = json.loads(message)

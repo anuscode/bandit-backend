@@ -12,7 +12,7 @@ def scheduler(
     async def synchronization():
         # rank with explorable false
         response = await clients.grpc.bandit.rank(
-            settings.master_grpc_address,
+            settings.bandit_master_grpc_endpoint,
             settings.max_slave_cache_size,
             explorable=False,
         )
@@ -22,7 +22,7 @@ def scheduler(
 
         # rank with explorable true
         response = await clients.grpc.bandit.rank(
-            settings.master_grpc_address,
+            settings.bandit_master_grpc_endpoint,
             settings.max_slave_cache_size,
             explorable=True,
         )

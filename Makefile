@@ -1,5 +1,5 @@
 APP_NAME=bandit-backend
-VERSION=1.0.1rc1
+VERSION=1.0.1rc3
 REGION=us-east-2
 ECR=533448761297.dkr.ecr.$(REGION).amazonaws.com
 CLUSTER=eks-cluster-dev
@@ -35,6 +35,8 @@ push-aws: ## Publish the `{version}` tagged container to ECR
 	docker push $(DOCKER_REPO)
 
 deploy-dev: ## Deploy bandit-backend-dev to K8s
+	cp .env.slave.k8s.dev helms/$(APP_NAME)/charts/slave/configs/.env.k8s.dev
+	cp .env.master.k8s.dev helms/$(APP_NAME)/charts/master/configs/.env.k8s.dev
 	@echo "=> Deploying bandit-backend-dev to K8s"
 	helm upgrade \
 	--create-namespace \
@@ -47,6 +49,8 @@ deploy-dev: ## Deploy bandit-backend-dev to K8s
 	--set slave.image.repository=$(ECR)/$(APP_NAME)
 
 deploy-prod: ## Deploy bandit-backend-prod to K8s
+	cp .env.slave.k8s.prod helms/$(APP_NAME)/charts/slave/configs/.env.k8s.prod
+	cp .env.master.k8s.prod helms/$(APP_NAME)/charts/master/configs/.env.k8s.prod
 	@echo "=> Deploying bandit-backend-prod to K8s"
 	helm upgrade \
 	--create-namespace \

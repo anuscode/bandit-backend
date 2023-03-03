@@ -1,3 +1,3 @@
-from clients.kafka import json
+from clients.kafka import item
 
-__all__ = ["json"]
+__all__ = ["item"]

@@ -1,5 +1,5 @@
 APP_NAME=bandit-backend
-VERSION=1.0.1rc3
+VERSION=1.0.1rc4
 REGION=us-east-2
 ECR=533448761297.dkr.ecr.$(REGION).amazonaws.com
 CLUSTER=eks-cluster-dev
@@ -34,7 +34,7 @@ push-aws: ## Publish the `{version}` tagged container to ECR
 	@echo '=> Publishing $(APP_NAME):$(VERSION) to $(DOCKER_REPO)'
 	docker push $(DOCKER_REPO)
 
-deploy-dev: ## Deploy bandit-backend-dev to K8s
+install-dev: ## Deploy bandit-backend-dev to K8s
 	cp .env.slave.k8s.dev helms/$(APP_NAME)/charts/slave/configs/.env.k8s.dev
 	cp .env.master.k8s.dev helms/$(APP_NAME)/charts/master/configs/.env.k8s.dev
 	@echo "=> Deploying bandit-backend-dev to K8s"
@@ -48,7 +48,7 @@ deploy-dev: ## Deploy bandit-backend-dev to K8s
 	--set slave.image.tag=$(VERSION) \
 	--set slave.image.repository=$(ECR)/$(APP_NAME)
 
-deploy-prod: ## Deploy bandit-backend-prod to K8s
+install-prod: ## Deploy bandit-backend-prod to K8s
 	cp .env.slave.k8s.prod helms/$(APP_NAME)/charts/slave/configs/.env.k8s.prod
 	cp .env.master.k8s.prod helms/$(APP_NAME)/charts/master/configs/.env.k8s.prod
 	@echo "=> Deploying bandit-backend-prod to K8s"
@@ -62,12 +62,6 @@ deploy-prod: ## Deploy bandit-backend-prod to K8s
 	--set slave.image.tag=$(VERSION) \
 	--set slave.image.repository=$(ECR)/$(APP_NAME)
 
-release-dev: \
-	compile build tag login-aws push-aws deploy-dev
-
-release-prod: \
-	compile build tag login-aws push-aws deploy-prod
-
 uninstall-dev:
 	@echo "=> Uninstalling bandit-backend-dev"
 	helm uninstall $(APP_NAME)-dev -n $(APP_NAME)-dev
@@ -75,3 +69,9 @@ uninstall-dev:
 uninstall-prod:
 	@echo "=> Uninstalling bandit-backend-prod"
 	helm uninstall $(APP_NAME)-prod -n $(APP_NAME)-prod
+
+release-dev: \
+	compile build tag login-aws push-aws install-dev
+
+release-prod: \
+	compile build tag login-aws push-aws install-prod

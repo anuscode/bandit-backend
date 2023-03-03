@@ -69,7 +69,7 @@ class SlaveBanditServicer(bandit_pb2_grpc.BanditServicer):
     ) -> bandit_pb2.UpdateResponse:
         """Update the bandit with the new observation."""
 
-        response = await clients.grpc.update(
+        response = await clients.grpc.bandit.update(
             settings.master_grpc_address,
             request.item_id,
             request.value,
@@ -81,7 +81,7 @@ class SlaveBanditServicer(bandit_pb2_grpc.BanditServicer):
     ) -> bandit_pb2.DeleteResponse:
         """Delete the bandit."""
 
-        response = await clients.grpc.delete(
+        response = await clients.grpc.bandit.delete(
             settings.master_grpc_address,
             request.item_id,
         )

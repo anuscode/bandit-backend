@@ -180,7 +180,7 @@ async def slave(
     async def synchronization():
         logger.debug("Updating predictions..")
         # total item_ids
-        response = await clients.grpc.rank(
+        response = await clients.grpc.bandit.rank(
             "MOCK_MASTER_GRPC_ADDRESS:50051", 100000, explorable=False
         )
         slave_bandit_servicer._samples[False] = {
@@ -188,7 +188,7 @@ async def slave(
         }
 
         # rank, explorable=True
-        response = await clients.grpc.rank(
+        response = await clients.grpc.bandit.rank(
             "MOCK_MASTER_GRPC_ADDRESS:50051", 100000, explorable=True
         )
         slave_bandit_servicer._samples[True] = {

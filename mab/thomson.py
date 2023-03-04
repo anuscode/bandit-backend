@@ -118,9 +118,6 @@ class ThompsonBandit(MAB):
 
     def update(self, c: Context):
 
-        if c.value == -1:
-            return
-
         if c.value == 1:
             nodes = list(self.contexts.iternodes())
             for node in reversed(nodes):
@@ -252,7 +249,8 @@ class ThompsonMultiArmedBandit(MAB):
         if not bandit:
             bandit = ThompsonBandit(item_id=c.item_id, created_at=c.updated_at)
             self._bandits[c.item_id] = bandit
-        bandit.update(c)
+        if c.value == 0 or c.value == 1:
+            bandit.update(c)
 
     def delete(self, key_or_keys: Union[str, Iterable[str]]) -> List[ThompsonBandit]:
         if isinstance(key_or_keys, str):

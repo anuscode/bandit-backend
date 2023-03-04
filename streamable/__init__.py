@@ -13,6 +13,11 @@ from observable import Observable
 
 
 class Streamable(abc.ABC):
+    kafka_counter_metric = Counter(
+        "kafka_messages_total",
+        "Count of total kafka messages.",
+    )
+
     def __init__(self):
         pass
 
@@ -26,11 +31,6 @@ class ItemStream(Streamable, abc.ABC):
         super().__init__()
         self._updatable = updatable
         self._deletable = deletable
-        self.kafka_counter_metric = Counter(
-            "kafka_messages_total",
-            "Count of total kafka messages.",
-        )
-        self.cache = cachetools.TTLCache(maxsize=200000, ttl=600)
 
     def start(self):
         """Publishing 을 시작한다."""
@@ -61,7 +61,45 @@ class ItemStream(Streamable, abc.ABC):
         asyncio.create_task(implementation())
 
 
+class TraceStream(Streamable, abc.ABC):
+    def __init__(self, updatable: Observable):
+        super().__init__()
+        self._updatable = updatable
+        self.cache = cachetools.TTLCache(maxsize=200000, ttl=600)
+
+    def start(self):
+        """Publishing 을 시작한다."""
+
+        async def implementation():
+
+            def to_context(x: Dict) -> Context:
+                item_id_ = x["item_id"]
+                value = 1 if x["exposed_by"] == "detail" else 0
+                updated_at = x["created_ts"]
+                return Context(item_id_, value, updated_at)
+
+            async for message in clients.kafka.trace.json.consume(topic="trace.dev.v1"):
+                try:
+                    message = message.value.decode("utf-8")
+                    message = json.loads(message)
+                    message_hash = (
+                        message["session_id"] + message["item_id"] + message["exposed_by"]
+                    )
+                    if message_hash in self.cache:
+                        continue
+
+                    self.cache[message_hash] = True
+
+                    context = to_context(message)
+                    await self._updatable.publish(context)
+                    self.kafka_counter_metric.inc()
+                except Exception as e:
+                    logger.error(e)
+
+        asyncio.create_task(implementation())
+
+
 __all__ = [
-    "Streamable",
     "ItemStream",
+    "TraceStream",
 ]

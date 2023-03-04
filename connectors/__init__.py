@@ -1,5 +1,4 @@
 import abc
-import threading
 from typing import NoReturn, TypeVar, List
 
 import annotations
@@ -35,12 +34,12 @@ class MABConnector(Connector):
 
     @awaitable
     def update(self, context: Context) -> NoReturn:
-        logger.info(f"MABConnector.Update, {threading.current_thread()}: {context}")
+        logger.info(f"MABConnector.Update: {context}")
         self.mab.update(context)
 
     @awaitable
     def delete(self, item_ids: List[str]) -> NoReturn:
-        logger.info(f"MABConnector.Update, {threading.current_thread()}: {item_ids}")
+        logger.info(f"MABConnector.Delete: {item_ids}")
         self.mab.delete(item_ids)
 
 
@@ -57,10 +56,10 @@ class TTLConnector(Connector):
 
     @awaitable
     def update(self, context: Context) -> NoReturn:
-        logger.info(f"TTLConnector.Update, {threading.current_thread()}: {context}")
+        logger.info(f"TTLConnector.Update: {context}")
         self.ttl.update(context.item_id)
 
     @awaitable
     def delete(self, item_ids: List[str]) -> NoReturn:
-        logger.info(f"TTLConnector.Delete, {threading.current_thread()}: {item_ids}")
+        logger.info(f"TTLConnector.Delete: {item_ids}")
         self.ttl.delete(item_ids)

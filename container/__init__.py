@@ -33,6 +33,11 @@ class Container(containers.DeclarativeContainer):
         deletable=deletable,
     )
 
+    trace_stream = providers.Singleton(
+        "streamable.TraceStream",
+        updatable=updatable,
+    )
+
     ttl_connector = providers.Singleton(
         "connectors.TTLConnector",
         ttl=ttl,

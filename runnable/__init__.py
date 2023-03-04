@@ -24,6 +24,7 @@ async def master(
     multi_armed_bandit: ThompsonMultiArmedBandit = Provide[Container.multi_armed_bandit],
     ttl: TTL = Provide[Container.ttl],
     item_stream: Streamable = Provide[Container.item_stream],
+    trace_stream: Streamable = Provide[Container.trace_stream],
     _: Connector = Provide[Container.ttl_connector],
     __: Connector = Provide[Container.mab_connector],
     master_scheduler: AsyncIOScheduler = Provide[Container.master_scheduler],
@@ -46,6 +47,7 @@ async def master(
     logger.debug("Starting service on %s", "0.0.0.0:50051")
 
     item_stream.start()
+    trace_stream.start()
     master_scheduler.start()
 
     await master_server.start()

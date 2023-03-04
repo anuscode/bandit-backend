@@ -1,12 +1,15 @@
 import uuid
 
 from aiokafka import AIOKafkaConsumer
+from aiokafka import AIOKafkaProducer
 
 from clients.configs import settings
 
 DEFAULT_BOOTSTRAP_SERVER = settings.bootstrap_server
 DEFAULT_AUTO_OFFSET_RESET = settings.auto_offset_reset
 DEFAULT_GROUP_ID = str(uuid.uuid4())
+
+producer: AIOKafkaProducer
 
 
 async def consume(
@@ -28,3 +31,17 @@ async def consume(
                 yield message
         finally:
             await consumer.stop()
+
+
+async def init_producer():
+    global producer
+    producer = AIOKafkaProducer(bootstrap_servers=DEFAULT_BOOTSTRAP_SERVER)
+    await producer.start()
+
+
+async def stop_producer():
+    await producer.stop()
+
+
+async def produce(topic: str, message: str):
+    await producer.send_and_wait(topic, message.encode())

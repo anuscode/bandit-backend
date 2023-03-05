@@ -1,11 +1,14 @@
+import uuid
+
 from clients.kafka import shared
 from clients.configs import settings
 
 DEFAULT_TOPIC = settings.item_topic
+DEFAULT_GROUP_ID = str(uuid.uuid4())
 
 
-async def consume(topic: str = DEFAULT_TOPIC):
-    async for message in shared.consume(topic):
+async def consume(topic: str = DEFAULT_TOPIC, group_id: str = DEFAULT_GROUP_ID):
+    async for message in shared.consume(topic, group_id=group_id):
         yield message
 
 

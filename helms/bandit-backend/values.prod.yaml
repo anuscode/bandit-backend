@@ -52,7 +52,7 @@ master:
       nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
       cert-manager.io/cluster-issuer: external-nginx-letsencrypt-prod
     hosts:
-      - host: bandit.master.prod.trollsoft.io
+      - host: bandit.master.prod.deletta.io
         paths:
           - path: /grpc.bandit.v1.Bandit
             pathType: Prefix
@@ -60,7 +60,7 @@ master:
     tls:
     - secretName: bandit-master-prod-tls
       hosts:
-      - bandit.master.prod.trollsoft.io
+      - bandit.master.prod.deletta.io
 
 
   resources: {}
@@ -140,7 +140,7 @@ slave:
       nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
       cert-manager.io/cluster-issuer: external-nginx-letsencrypt-prod
     hosts:
-      - host: bandit.slave.prod.trollsoft.io
+      - host: bandit.slave.prod.deletta.io
         paths:
           - path: /grpc.bandit.v1.Bandit
             pathType: Prefix
@@ -148,7 +148,7 @@ slave:
     tls:
     - secretName: bandit-slave-prod-tls
       hosts:
-      - bandit.slave.prod.trollsoft.io
+      - bandit.slave.prod.deletta.io
 
   resources: { }
     # We usually recommend not to specify default resources and to leave this as a conscious

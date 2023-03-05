@@ -111,7 +111,7 @@ if __name__ == "__main__":
     import asyncio
 
     async def main():
-        response = await rank("bandit.slave.dev.trollsoft.io:443")
+        response = await rank("bandit.slave.dev.deletta.io:443")
         print([x for x in response.predictions])
 
     asyncio.run(main())

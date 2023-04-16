@@ -7,6 +7,7 @@ import cachetools
 from prometheus_client import Counter
 
 import clients.kafka
+from clients.configs import settings
 from loggers import logger
 from mab import Context
 from observable import Observable
@@ -43,7 +44,7 @@ class ItemStream(Streamable, abc.ABC):
                 updated_at = x["created_ts"]
                 return Context(item_id_, value, updated_at)
 
-            async for message in clients.kafka.item.json.consume(topic="item.dev.v1"):
+            async for message in clients.kafka.item.json.consume(topic=settings.item_topic):
                 try:
                     message = message.value.decode("utf-8")
                     message = json.loads(message)
@@ -78,7 +79,7 @@ class TraceStream(Streamable, abc.ABC):
                 updated_at = x["created_ts"]
                 return Context(item_id_, value, updated_at)
 
-            async for message in clients.kafka.trace.json.consume(topic="trace.dev.v1"):
+            async for message in clients.kafka.trace.json.consume(topic=settings.trace_topic):
                 try:
                     message = message.value.decode("utf-8")
                     message = json.loads(message)

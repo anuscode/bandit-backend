@@ -10,6 +10,7 @@ service Bandit {
   rpc betas(BetasRequest) returns (BetasResponse) {}
   rpc update(UpdateRequest) returns (UpdateResponse) {}
   rpc delete(DeleteRequest) returns (DeleteResponse) {}
+  rpc heuristics(HeuristicsRequest) returns (HeuristicsResponse) {}
 }
 
 message Prediction {
@@ -17,6 +18,7 @@ message Prediction {
   float score = 2;
   int32 alpha = 4;
   int32 beta = 5;
+  float created_ts = 6;
 }
 
 // Get
@@ -106,4 +108,13 @@ message DeleteRequest {
 message DeleteResponse {
   bool success = 1;
   bool error = 2;
+}
+
+// Heuristics
+message HeuristicsRequest {}
+
+message HeuristicsResponse {
+  bool success = 1;
+  string error = 2;
+  repeated Prediction predictions = 3;
 }

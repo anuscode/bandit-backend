@@ -11,8 +11,8 @@ class Settings(BaseSettings):
     # kafka
     bootstrap_server: str = "kafka-0.deletta.io:9094"
     auto_offset_reset: str = "earliest"
-    item_topic: str = "item.dev.v1"
-    trace_topic: str = "trace.dev.v1"
+    item_topic: str = "item.event.dev.v1"
+    trace_topic: str = "trace.view.dev.v1"
 
     # endpoints
     item_http_endpoint: str = "http://item-backend:8000"

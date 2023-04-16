@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     metrics_port: int = 80
 
     # TTL
-    default_ttl: int = 60 * 60 * 24 * 30
+    default_ttl: int = 60 * 60 * 24 * 7
     ttl_cleanup_interval: int = 600 * 12
 
     bandit_master_grpc_endpoint: str = ""

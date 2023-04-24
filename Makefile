@@ -1,9 +1,9 @@
 APP_NAME=bandit-backend
-VERSION=1.0.2rc3
-REGION=us-east-2
-ECR=533448761297.dkr.ecr.$(REGION).amazonaws.com
-CLUSTER=eks-cluster-dev
-CONTEXT=arn:aws:eks:$(REGION):533448761297:cluster/$(CLUSTER)
+VERSION=1.0.0.rc1
+REGION=ap-northeast-2
+ECR=576471727047.dkr.ecr.$(REGION).amazonaws.com
+CLUSTER=eks-cluster-prod
+CONTEXT=arn:aws:eks:$(REGION):576471727047:cluster/$(CLUSTER)
 DOCKER_REPO="$(ECR)/$(APP_NAME):$(VERSION)"
 
 compile: ## compile protobuf

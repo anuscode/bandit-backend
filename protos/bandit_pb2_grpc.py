@@ -49,6 +49,11 @@ class BanditStub(object):
                 request_serializer=protos_dot_bandit__pb2.DeleteRequest.SerializeToString,
                 response_deserializer=protos_dot_bandit__pb2.DeleteResponse.FromString,
                 )
+        self.heuristics = channel.unary_unary(
+                '/grpc.bandit.v1.Bandit/heuristics',
+                request_serializer=protos_dot_bandit__pb2.HeuristicsRequest.SerializeToString,
+                response_deserializer=protos_dot_bandit__pb2.HeuristicsResponse.FromString,
+                )
 
 
 class BanditServicer(object):
@@ -96,6 +101,12 @@ class BanditServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def heuristics(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_BanditServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -133,6 +144,11 @@ def add_BanditServicer_to_server(servicer, server):
                     servicer.delete,
                     request_deserializer=protos_dot_bandit__pb2.DeleteRequest.FromString,
                     response_serializer=protos_dot_bandit__pb2.DeleteResponse.SerializeToString,
+            ),
+            'heuristics': grpc.unary_unary_rpc_method_handler(
+                    servicer.heuristics,
+                    request_deserializer=protos_dot_bandit__pb2.HeuristicsRequest.FromString,
+                    response_serializer=protos_dot_bandit__pb2.HeuristicsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -260,5 +276,22 @@ class Bandit(object):
         return grpc.experimental.unary_unary(request, target, '/grpc.bandit.v1.Bandit/delete',
             protos_dot_bandit__pb2.DeleteRequest.SerializeToString,
             protos_dot_bandit__pb2.DeleteResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def heuristics(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/grpc.bandit.v1.Bandit/heuristics',
+            protos_dot_bandit__pb2.HeuristicsRequest.SerializeToString,
+            protos_dot_bandit__pb2.HeuristicsResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

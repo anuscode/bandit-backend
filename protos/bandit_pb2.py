@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13protos/bandit.proto\x12\x0egrpc.bandit.v1\"I\n\nPrediction\x12\x0f\n\x07item_id\x18\x01 \x01(\t\x12\r\n\x05score\x18\x02 \x01(\x02\x12\r\n\x05\x61lpha\x18\x04 \x01(\x05\x12\x0c\n\x04\x62\x65ta\x18\x05 \x01(\x05\"1\n\nGetRequest\x12\x0f\n\x07item_id\x18\x01 \x01(\t\x12\x12\n\nexplorable\x18\x02 \x01(\x08\"]\n\x0bGetResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12.\n\nprediction\x18\x03 \x01(\x0b\x32\x1a.grpc.bandit.v1.Prediction\"0\n\x0bRankRequest\x12\r\n\x05\x63ount\x18\x01 \x01(\x05\x12\x12\n\nexplorable\x18\x02 \x01(\x08\"_\n\x0cRankResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12/\n\x0bpredictions\x18\x03 \x03(\x0b\x32\x1a.grpc.bandit.v1.Prediction\"u\n\rSelectRequest\x12\x10\n\x08item_ids\x18\x01 \x03(\t\x12\x12\n\nexplorable\x18\x02 \x01(\x08\x12\x12\n\x05\x64\x65\x62ug\x18\x03 \x01(\x08H\x00\x88\x01\x01\x12\x14\n\x07user_id\x18\x04 \x01(\tH\x01\x88\x01\x01\x42\x08\n\x06_debugB\n\n\x08_user_id\"a\n\x0eSelectResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12/\n\x0bpredictions\x18\x03 \x03(\x0b\x32\x1a.grpc.bandit.v1.Prediction\"v\n\x0eSamplesRequest\x12\x10\n\x08item_ids\x18\x01 \x03(\t\x12\x12\n\nexplorable\x18\x02 \x01(\x08\x12\x12\n\x05\x64\x65\x62ug\x18\x03 \x01(\x08H\x00\x88\x01\x01\x12\x14\n\x07user_id\x18\x04 \x01(\tH\x01\x88\x01\x01\x42\x08\n\x06_debugB\n\n\x08_user_id\"b\n\x0fSamplesResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12/\n\x0bpredictions\x18\x03 \x03(\x0b\x32\x1a.grpc.bandit.v1.Prediction\"t\n\x0c\x42\x65tasRequest\x12\x10\n\x08item_ids\x18\x01 \x03(\t\x12\x12\n\nexplorable\x18\x02 \x01(\x08\x12\x12\n\x05\x64\x65\x62ug\x18\x03 \x01(\x08H\x00\x88\x01\x01\x12\x14\n\x07user_id\x18\x04 \x01(\tH\x01\x88\x01\x01\x42\x08\n\x06_debugB\n\n\x08_user_id\"`\n\rBetasResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12/\n\x0bpredictions\x18\x03 \x03(\x0b\x32\x1a.grpc.bandit.v1.Prediction\"C\n\rUpdateRequest\x12\x0f\n\x07item_id\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x02\x12\x12\n\nupdated_at\x18\x03 \x01(\x02\"0\n\x0eUpdateResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\" \n\rDeleteRequest\x12\x0f\n\x07item_id\x18\x01 \x01(\t\"0\n\x0e\x44\x65leteResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\x08\x32\x86\x04\n\x06\x42\x61ndit\x12@\n\x03get\x12\x1a.grpc.bandit.v1.GetRequest\x1a\x1b.grpc.bandit.v1.GetResponse\"\x00\x12\x43\n\x04rank\x12\x1b.grpc.bandit.v1.RankRequest\x1a\x1c.grpc.bandit.v1.RankResponse\"\x00\x12I\n\x06select\x12\x1d.grpc.bandit.v1.SelectRequest\x1a\x1e.grpc.bandit.v1.SelectResponse\"\x00\x12L\n\x07samples\x12\x1e.grpc.bandit.v1.SamplesRequest\x1a\x1f.grpc.bandit.v1.SamplesResponse\"\x00\x12\x46\n\x05\x62\x65tas\x12\x1c.grpc.bandit.v1.BetasRequest\x1a\x1d.grpc.bandit.v1.BetasResponse\"\x00\x12I\n\x06update\x12\x1d.grpc.bandit.v1.UpdateRequest\x1a\x1e.grpc.bandit.v1.UpdateResponse\"\x00\x12I\n\x06\x64\x65lete\x12\x1d.grpc.bandit.v1.DeleteRequest\x1a\x1e.grpc.bandit.v1.DeleteResponse\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13protos/bandit.proto\x12\x0egrpc.bandit.v1\"]\n\nPrediction\x12\x0f\n\x07item_id\x18\x01 \x01(\t\x12\r\n\x05score\x18\x02 \x01(\x02\x12\r\n\x05\x61lpha\x18\x04 \x01(\x05\x12\x0c\n\x04\x62\x65ta\x18\x05 \x01(\x05\x12\x12\n\ncreated_ts\x18\x06 \x01(\x02\"1\n\nGetRequest\x12\x0f\n\x07item_id\x18\x01 \x01(\t\x12\x12\n\nexplorable\x18\x02 \x01(\x08\"]\n\x0bGetResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12.\n\nprediction\x18\x03 \x01(\x0b\x32\x1a.grpc.bandit.v1.Prediction\"0\n\x0bRankRequest\x12\r\n\x05\x63ount\x18\x01 \x01(\x05\x12\x12\n\nexplorable\x18\x02 \x01(\x08\"_\n\x0cRankResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12/\n\x0bpredictions\x18\x03 \x03(\x0b\x32\x1a.grpc.bandit.v1.Prediction\"u\n\rSelectRequest\x12\x10\n\x08item_ids\x18\x01 \x03(\t\x12\x12\n\nexplorable\x18\x02 \x01(\x08\x12\x12\n\x05\x64\x65\x62ug\x18\x03 \x01(\x08H\x00\x88\x01\x01\x12\x14\n\x07user_id\x18\x04 \x01(\tH\x01\x88\x01\x01\x42\x08\n\x06_debugB\n\n\x08_user_id\"a\n\x0eSelectResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12/\n\x0bpredictions\x18\x03 \x03(\x0b\x32\x1a.grpc.bandit.v1.Prediction\"v\n\x0eSamplesRequest\x12\x10\n\x08item_ids\x18\x01 \x03(\t\x12\x12\n\nexplorable\x18\x02 \x01(\x08\x12\x12\n\x05\x64\x65\x62ug\x18\x03 \x01(\x08H\x00\x88\x01\x01\x12\x14\n\x07user_id\x18\x04 \x01(\tH\x01\x88\x01\x01\x42\x08\n\x06_debugB\n\n\x08_user_id\"b\n\x0fSamplesResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12/\n\x0bpredictions\x18\x03 \x03(\x0b\x32\x1a.grpc.bandit.v1.Prediction\"t\n\x0c\x42\x65tasRequest\x12\x10\n\x08item_ids\x18\x01 \x03(\t\x12\x12\n\nexplorable\x18\x02 \x01(\x08\x12\x12\n\x05\x64\x65\x62ug\x18\x03 \x01(\x08H\x00\x88\x01\x01\x12\x14\n\x07user_id\x18\x04 \x01(\tH\x01\x88\x01\x01\x42\x08\n\x06_debugB\n\n\x08_user_id\"`\n\rBetasResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12/\n\x0bpredictions\x18\x03 \x03(\x0b\x32\x1a.grpc.bandit.v1.Prediction\"C\n\rUpdateRequest\x12\x0f\n\x07item_id\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x02\x12\x12\n\nupdated_at\x18\x03 \x01(\x02\"0\n\x0eUpdateResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\" \n\rDeleteRequest\x12\x0f\n\x07item_id\x18\x01 \x01(\t\"0\n\x0e\x44\x65leteResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\x08\"\x13\n\x11HeuristicsRequest\"e\n\x12HeuristicsResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12/\n\x0bpredictions\x18\x03 \x03(\x0b\x32\x1a.grpc.bandit.v1.Prediction2\xdd\x04\n\x06\x42\x61ndit\x12@\n\x03get\x12\x1a.grpc.bandit.v1.GetRequest\x1a\x1b.grpc.bandit.v1.GetResponse\"\x00\x12\x43\n\x04rank\x12\x1b.grpc.bandit.v1.RankRequest\x1a\x1c.grpc.bandit.v1.RankResponse\"\x00\x12I\n\x06select\x12\x1d.grpc.bandit.v1.SelectRequest\x1a\x1e.grpc.bandit.v1.SelectResponse\"\x00\x12L\n\x07samples\x12\x1e.grpc.bandit.v1.SamplesRequest\x1a\x1f.grpc.bandit.v1.SamplesResponse\"\x00\x12\x46\n\x05\x62\x65tas\x12\x1c.grpc.bandit.v1.BetasRequest\x1a\x1d.grpc.bandit.v1.BetasResponse\"\x00\x12I\n\x06update\x12\x1d.grpc.bandit.v1.UpdateRequest\x1a\x1e.grpc.bandit.v1.UpdateResponse\"\x00\x12I\n\x06\x64\x65lete\x12\x1d.grpc.bandit.v1.DeleteRequest\x1a\x1e.grpc.bandit.v1.DeleteResponse\"\x00\x12U\n\nheuristics\x12!.grpc.bandit.v1.HeuristicsRequest\x1a\".grpc.bandit.v1.HeuristicsResponse\"\x00\x62\x06proto3')
 
 
 
@@ -33,6 +33,8 @@ _UPDATEREQUEST = DESCRIPTOR.message_types_by_name['UpdateRequest']
 _UPDATERESPONSE = DESCRIPTOR.message_types_by_name['UpdateResponse']
 _DELETEREQUEST = DESCRIPTOR.message_types_by_name['DeleteRequest']
 _DELETERESPONSE = DESCRIPTOR.message_types_by_name['DeleteResponse']
+_HEURISTICSREQUEST = DESCRIPTOR.message_types_by_name['HeuristicsRequest']
+_HEURISTICSRESPONSE = DESCRIPTOR.message_types_by_name['HeuristicsResponse']
 Prediction = _reflection.GeneratedProtocolMessageType('Prediction', (_message.Message,), {
   'DESCRIPTOR' : _PREDICTION,
   '__module__' : 'protos.bandit_pb2'
@@ -138,40 +140,58 @@ DeleteResponse = _reflection.GeneratedProtocolMessageType('DeleteResponse', (_me
   })
 _sym_db.RegisterMessage(DeleteResponse)
 
+HeuristicsRequest = _reflection.GeneratedProtocolMessageType('HeuristicsRequest', (_message.Message,), {
+  'DESCRIPTOR' : _HEURISTICSREQUEST,
+  '__module__' : 'protos.bandit_pb2'
+  # @@protoc_insertion_point(class_scope:grpc.bandit.v1.HeuristicsRequest)
+  })
+_sym_db.RegisterMessage(HeuristicsRequest)
+
+HeuristicsResponse = _reflection.GeneratedProtocolMessageType('HeuristicsResponse', (_message.Message,), {
+  'DESCRIPTOR' : _HEURISTICSRESPONSE,
+  '__module__' : 'protos.bandit_pb2'
+  # @@protoc_insertion_point(class_scope:grpc.bandit.v1.HeuristicsResponse)
+  })
+_sym_db.RegisterMessage(HeuristicsResponse)
+
 _BANDIT = DESCRIPTOR.services_by_name['Bandit']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   _PREDICTION._serialized_start=39
-  _PREDICTION._serialized_end=112
-  _GETREQUEST._serialized_start=114
-  _GETREQUEST._serialized_end=163
-  _GETRESPONSE._serialized_start=165
-  _GETRESPONSE._serialized_end=258
-  _RANKREQUEST._serialized_start=260
-  _RANKREQUEST._serialized_end=308
-  _RANKRESPONSE._serialized_start=310
-  _RANKRESPONSE._serialized_end=405
-  _SELECTREQUEST._serialized_start=407
-  _SELECTREQUEST._serialized_end=524
-  _SELECTRESPONSE._serialized_start=526
-  _SELECTRESPONSE._serialized_end=623
-  _SAMPLESREQUEST._serialized_start=625
-  _SAMPLESREQUEST._serialized_end=743
-  _SAMPLESRESPONSE._serialized_start=745
-  _SAMPLESRESPONSE._serialized_end=843
-  _BETASREQUEST._serialized_start=845
-  _BETASREQUEST._serialized_end=961
-  _BETASRESPONSE._serialized_start=963
-  _BETASRESPONSE._serialized_end=1059
-  _UPDATEREQUEST._serialized_start=1061
-  _UPDATEREQUEST._serialized_end=1128
-  _UPDATERESPONSE._serialized_start=1130
-  _UPDATERESPONSE._serialized_end=1178
-  _DELETEREQUEST._serialized_start=1180
-  _DELETEREQUEST._serialized_end=1212
-  _DELETERESPONSE._serialized_start=1214
-  _DELETERESPONSE._serialized_end=1262
-  _BANDIT._serialized_start=1265
-  _BANDIT._serialized_end=1783
+  _PREDICTION._serialized_end=132
+  _GETREQUEST._serialized_start=134
+  _GETREQUEST._serialized_end=183
+  _GETRESPONSE._serialized_start=185
+  _GETRESPONSE._serialized_end=278
+  _RANKREQUEST._serialized_start=280
+  _RANKREQUEST._serialized_end=328
+  _RANKRESPONSE._serialized_start=330
+  _RANKRESPONSE._serialized_end=425
+  _SELECTREQUEST._serialized_start=427
+  _SELECTREQUEST._serialized_end=544
+  _SELECTRESPONSE._serialized_start=546
+  _SELECTRESPONSE._serialized_end=643
+  _SAMPLESREQUEST._serialized_start=645
+  _SAMPLESREQUEST._serialized_end=763
+  _SAMPLESRESPONSE._serialized_start=765
+  _SAMPLESRESPONSE._serialized_end=863
+  _BETASREQUEST._serialized_start=865
+  _BETASREQUEST._serialized_end=981
+  _BETASRESPONSE._serialized_start=983
+  _BETASRESPONSE._serialized_end=1079
+  _UPDATEREQUEST._serialized_start=1081
+  _UPDATEREQUEST._serialized_end=1148
+  _UPDATERESPONSE._serialized_start=1150
+  _UPDATERESPONSE._serialized_end=1198
+  _DELETEREQUEST._serialized_start=1200
+  _DELETEREQUEST._serialized_end=1232
+  _DELETERESPONSE._serialized_start=1234
+  _DELETERESPONSE._serialized_end=1282
+  _HEURISTICSREQUEST._serialized_start=1284
+  _HEURISTICSREQUEST._serialized_end=1303
+  _HEURISTICSRESPONSE._serialized_start=1305
+  _HEURISTICSRESPONSE._serialized_end=1406
+  _BANDIT._serialized_start=1409
+  _BANDIT._serialized_end=2014
 # @@protoc_insertion_point(module_scope)

@@ -15,7 +15,7 @@ unittest: ## Unittest execution
 
 build: ## Build the container
 	@echo "=> Building $(APP_NAME):$(VERSION)"
-	docker build -t $(APP_NAME):$(VERSION) -f Dockerfile .
+	docker buildx build --platform=linux/amd64 -t $(APP_NAME):$(VERSION) -f Dockerfile .
 
 tag: ## Tag the container
 	@echo "=> Tagging $(APP_NAME):$(VERSION) as $(DOCKER_REPO)"

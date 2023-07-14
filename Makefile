@@ -1,5 +1,5 @@
 APP_NAME=bandit-backend
-VERSION=1.0.0.rc2
+VERSION=1.0.0.rc3
 REGION=ap-northeast-2
 ECR=576471727047.dkr.ecr.$(REGION).amazonaws.com
 CLUSTER=eks-cluster-prod

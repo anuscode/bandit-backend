@@ -1,12 +1,9 @@
-import collections
-from dataclasses import dataclass, field
-
-Context = collections.namedtuple("Context", ["item_id", "value", "updated_at"])
+from dataclasses import dataclass
 
 
-# @dataclass
-# class Context:
-#     item_id: str
-#     author_id: str | None = None
-#     value: str = field(default='Bravo')
-#     updated_at: str = field(default='Charlie')
+@dataclass
+class Context:
+    item_id: str
+    value: int
+    updated_at: float
+    author_id: str | None = None

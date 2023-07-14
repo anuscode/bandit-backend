@@ -1,6 +1,6 @@
-import collections
 import math
 import time
+from dataclasses import dataclass
 from typing import Optional, Iterable, Dict, Tuple, List, Union
 
 import llist
@@ -13,9 +13,19 @@ from mab.abstracts import MAB
 from mab.context import Context
 
 
-Prediction = collections.namedtuple("Prediction", ["item_id", "score", "alpha", "beta"])
+@dataclass
+class Prediction:
+    item_id: str
+    score: float
+    alpha: int
+    beta: int
 
-Observation = collections.namedtuple("Observation", ["item_id", "alpha", "beta"])
+
+@dataclass
+class Observation:
+    item_id: str
+    alpha: int
+    beta: int
 
 
 class ThompsonBandit(MAB):
@@ -218,7 +228,7 @@ class ThompsonMultiArmedBandit(MAB):
             ranked_bandits = tuple(bandits[x] for x in ranked_indices)
             ranked_rewards = tuple(rewards[x] for x in ranked_indices)
             return [
-                (x.item_id, y, x.alpha, x.beta)
+                Prediction(item_id=x.item_id, score=y, alpha=x.alpha, beta=x.beta)
                 for x, y in zip(ranked_bandits, ranked_rewards)
             ]
 

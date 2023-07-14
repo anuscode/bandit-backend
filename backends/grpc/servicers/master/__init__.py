@@ -16,10 +16,10 @@ DEFAULT_BETA_DIST = functools.partial(np.random.beta, 1, 1)
 
 def to_proto_prediction(x: Prediction) -> bandit_pb2.Prediction:
     return bandit_pb2.Prediction(
-        item_id=x[0],
-        score=x[1],
-        alpha=x[2],
-        beta=x[3],
+        item_id=x.item_id,
+        score=x.score,
+        alpha=x.alpha,
+        beta=x.beta,
     )
 
 
@@ -73,10 +73,10 @@ class MasterBanditServicer(bandit_pb2_grpc.BanditServicer):
         return bandit_pb2.GetResponse(
             success=True,
             prediction=bandit_pb2.Prediction(
-                item_id=prediction[0],
-                score=prediction[1],
-                alpha=prediction[2],
-                beta=prediction[3],
+                item_id=prediction.item_id,
+                score=prediction.score,
+                alpha=prediction.alpha,
+                beta=prediction.beta,
             ),
         )
 
@@ -89,7 +89,7 @@ class MasterBanditServicer(bandit_pb2_grpc.BanditServicer):
             return Prediction(item_id=item_id, score=DEFAULT_BETA_DIST(), alpha=0, beta=0)
 
         predictions = self.multi_armed_bandit.pull(explorable=explorable)
-        predictions = map(lambda x: (x[0], x), predictions)
+        predictions = map(lambda x: (x.item_id, x), predictions)
         predictions = dict(predictions)
         predictions = [predictions.get(x, default(x)) for x in request.item_ids]
         predictions = map(to_proto_prediction, predictions)

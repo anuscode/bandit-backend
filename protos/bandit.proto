@@ -15,7 +15,8 @@ service Bandit {
 
 message Prediction {
   string item_id = 1;
-  float score = 2;
+  string user_id = 2;
+  float score = 3;
   int32 alpha = 4;
   int32 beta = 5;
   float created_ts = 6;

@@ -40,9 +40,10 @@ class ItemStream(Streamable, abc.ABC):
 
             def to_context(x: Dict) -> Context:
                 item_id_ = x["item_id"]
+                user_id_ = x["author"]["user_id"]
                 value = -1
                 updated_at = x["created_ts"]
-                return Context(item_id_, value, updated_at)
+                return Context(item_id_, user_id_, value, updated_at)
 
             async for message in clients.kafka.item.json.consume(topic=settings.item_topic):
                 try:

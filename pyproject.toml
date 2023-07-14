@@ -15,3 +15,43 @@ exclude = '''
   | protos
 )/
 '''
+
+[tool.poetry]
+name = "bandit-backend"
+version = "0.1.0"
+description = ""
+authors = ["nelly <dldyddn0624@gmail.com>"]
+readme = "README.md"
+packages = [{include = "bandit_backend"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+numpy = "^1.25.1"
+matplotlib = "^3.7.2"
+cachetools = "^5.3.1"
+apscheduler = "^3.10.1"
+llist = "^0.7.1"
+aiokafka = "^0.8.1"
+confluent-kafka = "^2.2.0"
+avro-python3 = "^1.10.2"
+fastavro = "^1.8.0"
+fastapi = "^0.100.0"
+starlette-context = "^0.3.6"
+dependency-injector = "^4.41.0"
+grpcio = "^1.56.0"
+grpcio-health-checking = "^1.56.0"
+grpcio-reflection = "^1.56.0"
+grpcio-tools = "^1.56.0"
+prometheus-client = "^0.17.1"
+prometheus-fastapi-instrumentator = "^6.0.0"
+sentry-sdk = "^1.28.1"
+pytest = "^7.4.0"
+pytest-asyncio = "^0.21.1"
+pytest-mock = "^3.11.1"
+moto = {extras = ["dynamo", "s3"], version = "^4.1.12"}
+fakeredis = "^2.16.0"
+pydantic = ">=1.10.2,<1.11.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -32,6 +32,7 @@ def elapsed(f):
     Returns:
         Decorated function that logs elapsed time and result.
     """
+
     @functools.wraps(f)
     def sync_wrapper(*args, **kwargs):
         with function_duration_seconds.labels(f.__name__).time():

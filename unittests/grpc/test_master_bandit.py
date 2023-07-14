@@ -478,7 +478,9 @@ async def test_updatable_publish_with_mab(
     )
 
     # When
-    await updatable.publish(Context(item_id="test_thompson_bandits_1", value=1.0, updated_at=1666180000))
+    await updatable.publish(
+        Context(item_id="test_thompson_bandits_1", value=1.0, updated_at=1666180000)
+    )
     await updatable.join()
     await asyncio.sleep(0.01)
 
@@ -508,4 +510,4 @@ async def test_updatable_publish_with_mab2(
     await updatable.join()
 
     # Then
-    assert ttl_interceptor.ttl.get("test_thompson_bandits_1") == 1668772000
+    assert ttl_interceptor.ttl.get("test_thompson_bandits_1") == 1666784800

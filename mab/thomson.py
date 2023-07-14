@@ -117,7 +117,6 @@ class ThompsonBandit(MAB):
         return Observation(item_id=self.item_id, alpha=self.alpha, beta=self.beta)
 
     def update(self, c: Context):
-
         if c.value == 1:
             nodes = list(self.contexts.iternodes())
             for node in reversed(nodes):

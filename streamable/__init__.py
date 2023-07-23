@@ -50,10 +50,10 @@ class ItemStream(Streamable, abc.ABC):
                     message = message.value.decode("utf-8")
                     message = json.loads(message)
                     if message["event"] in ["update", "create"]:
-                        context = to_context(message["data"])
+                        context = to_context(message["item"])
                         await self._updatable.publish(context)
-                    elif message["event"] == "delete":
-                        item_id = message["data"]["item_id"]
+                    elif message["event"] in ["delete", "remove"]:
+                        item_id = message["item_id"]
                         await self._deletable.publish([item_id])
                 except Exception as e:
                     logger.error(e)

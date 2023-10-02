@@ -1,4 +1,4 @@
-ACCOUNT_ID  := 576471727047
+ACCOUNT_ID   := 576471727047
 APP_NAME    := bandit-backend
 VERSION     := $(shell poetry version --short)
 REGION      := ap-northeast-2
@@ -45,6 +45,9 @@ git-push:
 	@echo "GIT Pushing => $(GIT_BRANCH)"
 	@git push origin $(GIT_BRANCH) --tags
 
+compile: ## compile protobuf
+	python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. protos/bandit.proto
+
 docker-build:
 	@echo "=> Building $(APP_NAME):$(VERSION)"
 	docker buildx build \
@@ -66,24 +69,24 @@ aws-push:
 	@echo '=> Publishing $(APP_NAME):$(VERSION) to $(DOCKER_REPO)'
 	docker push $(DOCKER_REPO)
 
-k8s-deploy:
-	cp .env.k8s.$(ENV) helms/$(APP_NAME)/configs/.env.k8s.$(ENV)
+helm-install-prod: ## Deploy bandit-backend-prod to K8s
+	cp .env.slave.k8s.prod helms/$(APP_NAME)/charts/slave/configs/.env.k8s.prod
+	cp .env.master.k8s.prod helms/$(APP_NAME)/charts/master/configs/.env.k8s.prod
+	@echo "=> Deploying bandit-backend-prod to K8s"
 	helm upgrade \
 	--create-namespace \
 	--kube-context $(CONTEXT) \
-	--namespace $(APP_NAME)-$(ENV) \
-	--install -f helms/$(APP_NAME)/values.$(ENV).yaml $(APP_NAME)-$(ENV) ./helms/$(APP_NAME)/ \
-	--set image.tag=$(VERSION) \
-	--set image.repository=$(ECR)/$(APP_NAME)
-
-helm-install-prod:
-	@make k8s-deploy ENV=prod
-	@echo "=> Deploying $(APP_NAME)-prod to K8s"
+	--namespace $(APP_NAME)-prod \
+	--install -f helms/$(APP_NAME)/values.prod.yaml $(APP_NAME)-prod ./helms/$(APP_NAME)/ \
+	--set master.image.tag=$(VERSION) \
+	--set master.image.repository=$(ECR)/$(APP_NAME) \
+	--set slave.image.tag=$(VERSION) \
+	--set slave.image.repository=$(ECR)/$(APP_NAME)
 
 helm-uninstall-prod:
-	@echo "=> Uninstalling bandit-backend-prod from K8s"
+	@echo "=> Uninstalling bandit-backend-prod"
 	helm uninstall $(APP_NAME)-prod -n $(APP_NAME)-prod
 
 snapshot: poetry-version git-commit git-push
 
-release-prod: docker-build docker-tag aws-login aws-push helm-install-prod
+release-prod: compile docker-build docker-tag aws-login aws-push helm-install-prod

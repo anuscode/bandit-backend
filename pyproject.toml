@@ -18,7 +18,7 @@ exclude = '''
 
 [tool.poetry]
 name = "bandit-backend"
-version = "0.1.1"
+version = "0.1.2"
 description = ""
 authors = ["nelly <dldyddn0624@gmail.com>"]
 readme = "README.md"

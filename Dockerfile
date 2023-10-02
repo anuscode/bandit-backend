@@ -28,7 +28,8 @@ COPY . /opt/bandit-backend
 WORKDIR /opt/bandit-backend
 
 RUN pip install -r requirements.txt
-
+# protobuf issue force to downgrade
+RUN pip install 'protobuf<=3.20.1' --force-reinstall
 EXPOSE 80 50051
 
 CMD ["python", "main.py"]

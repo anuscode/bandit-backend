@@ -3,7 +3,6 @@
 # source: protos/bandit.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
-from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -14,27 +13,844 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13protos/bandit.proto\x12\x0egrpc.bandit.v1\"]\n\nPrediction\x12\x0f\n\x07item_id\x18\x01 \x01(\t\x12\r\n\x05score\x18\x02 \x01(\x02\x12\r\n\x05\x61lpha\x18\x04 \x01(\x05\x12\x0c\n\x04\x62\x65ta\x18\x05 \x01(\x05\x12\x12\n\ncreated_ts\x18\x06 \x01(\x02\"1\n\nGetRequest\x12\x0f\n\x07item_id\x18\x01 \x01(\t\x12\x12\n\nexplorable\x18\x02 \x01(\x08\"]\n\x0bGetResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12.\n\nprediction\x18\x03 \x01(\x0b\x32\x1a.grpc.bandit.v1.Prediction\"0\n\x0bRankRequest\x12\r\n\x05\x63ount\x18\x01 \x01(\x05\x12\x12\n\nexplorable\x18\x02 \x01(\x08\"_\n\x0cRankResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12/\n\x0bpredictions\x18\x03 \x03(\x0b\x32\x1a.grpc.bandit.v1.Prediction\"u\n\rSelectRequest\x12\x10\n\x08item_ids\x18\x01 \x03(\t\x12\x12\n\nexplorable\x18\x02 \x01(\x08\x12\x12\n\x05\x64\x65\x62ug\x18\x03 \x01(\x08H\x00\x88\x01\x01\x12\x14\n\x07user_id\x18\x04 \x01(\tH\x01\x88\x01\x01\x42\x08\n\x06_debugB\n\n\x08_user_id\"a\n\x0eSelectResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12/\n\x0bpredictions\x18\x03 \x03(\x0b\x32\x1a.grpc.bandit.v1.Prediction\"v\n\x0eSamplesRequest\x12\x10\n\x08item_ids\x18\x01 \x03(\t\x12\x12\n\nexplorable\x18\x02 \x01(\x08\x12\x12\n\x05\x64\x65\x62ug\x18\x03 \x01(\x08H\x00\x88\x01\x01\x12\x14\n\x07user_id\x18\x04 \x01(\tH\x01\x88\x01\x01\x42\x08\n\x06_debugB\n\n\x08_user_id\"b\n\x0fSamplesResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12/\n\x0bpredictions\x18\x03 \x03(\x0b\x32\x1a.grpc.bandit.v1.Prediction\"t\n\x0c\x42\x65tasRequest\x12\x10\n\x08item_ids\x18\x01 \x03(\t\x12\x12\n\nexplorable\x18\x02 \x01(\x08\x12\x12\n\x05\x64\x65\x62ug\x18\x03 \x01(\x08H\x00\x88\x01\x01\x12\x14\n\x07user_id\x18\x04 \x01(\tH\x01\x88\x01\x01\x42\x08\n\x06_debugB\n\n\x08_user_id\"`\n\rBetasResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12/\n\x0bpredictions\x18\x03 \x03(\x0b\x32\x1a.grpc.bandit.v1.Prediction\"C\n\rUpdateRequest\x12\x0f\n\x07item_id\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x02\x12\x12\n\nupdated_at\x18\x03 \x01(\x02\"0\n\x0eUpdateResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\" \n\rDeleteRequest\x12\x0f\n\x07item_id\x18\x01 \x01(\t\"0\n\x0e\x44\x65leteResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\x08\"\x13\n\x11HeuristicsRequest\"e\n\x12HeuristicsResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12/\n\x0bpredictions\x18\x03 \x03(\x0b\x32\x1a.grpc.bandit.v1.Prediction2\xdd\x04\n\x06\x42\x61ndit\x12@\n\x03get\x12\x1a.grpc.bandit.v1.GetRequest\x1a\x1b.grpc.bandit.v1.GetResponse\"\x00\x12\x43\n\x04rank\x12\x1b.grpc.bandit.v1.RankRequest\x1a\x1c.grpc.bandit.v1.RankResponse\"\x00\x12I\n\x06select\x12\x1d.grpc.bandit.v1.SelectRequest\x1a\x1e.grpc.bandit.v1.SelectResponse\"\x00\x12L\n\x07samples\x12\x1e.grpc.bandit.v1.SamplesRequest\x1a\x1f.grpc.bandit.v1.SamplesResponse\"\x00\x12\x46\n\x05\x62\x65tas\x12\x1c.grpc.bandit.v1.BetasRequest\x1a\x1d.grpc.bandit.v1.BetasResponse\"\x00\x12I\n\x06update\x12\x1d.grpc.bandit.v1.UpdateRequest\x1a\x1e.grpc.bandit.v1.UpdateResponse\"\x00\x12I\n\x06\x64\x65lete\x12\x1d.grpc.bandit.v1.DeleteRequest\x1a\x1e.grpc.bandit.v1.DeleteResponse\"\x00\x12U\n\nheuristics\x12!.grpc.bandit.v1.HeuristicsRequest\x1a\".grpc.bandit.v1.HeuristicsResponse\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor.FileDescriptor(
+  name='protos/bandit.proto',
+  package='grpc.bandit.v1',
+  syntax='proto3',
+  serialized_options=None,
+  create_key=_descriptor._internal_create_key,
+  serialized_pb=b'\n\x13protos/bandit.proto\x12\x0egrpc.bandit.v1\"]\n\nPrediction\x12\x0f\n\x07item_id\x18\x01 \x01(\t\x12\r\n\x05score\x18\x02 \x01(\x02\x12\r\n\x05\x61lpha\x18\x04 \x01(\x05\x12\x0c\n\x04\x62\x65ta\x18\x05 \x01(\x05\x12\x12\n\ncreated_ts\x18\x06 \x01(\x02\"1\n\nGetRequest\x12\x0f\n\x07item_id\x18\x01 \x01(\t\x12\x12\n\nexplorable\x18\x02 \x01(\x08\"]\n\x0bGetResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12.\n\nprediction\x18\x03 \x01(\x0b\x32\x1a.grpc.bandit.v1.Prediction\"0\n\x0bRankRequest\x12\r\n\x05\x63ount\x18\x01 \x01(\x05\x12\x12\n\nexplorable\x18\x02 \x01(\x08\"_\n\x0cRankResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12/\n\x0bpredictions\x18\x03 \x03(\x0b\x32\x1a.grpc.bandit.v1.Prediction\"u\n\rSelectRequest\x12\x10\n\x08item_ids\x18\x01 \x03(\t\x12\x12\n\nexplorable\x18\x02 \x01(\x08\x12\x12\n\x05\x64\x65\x62ug\x18\x03 \x01(\x08H\x00\x88\x01\x01\x12\x14\n\x07user_id\x18\x04 \x01(\tH\x01\x88\x01\x01\x42\x08\n\x06_debugB\n\n\x08_user_id\"a\n\x0eSelectResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12/\n\x0bpredictions\x18\x03 \x03(\x0b\x32\x1a.grpc.bandit.v1.Prediction\"v\n\x0eSamplesRequest\x12\x10\n\x08item_ids\x18\x01 \x03(\t\x12\x12\n\nexplorable\x18\x02 \x01(\x08\x12\x12\n\x05\x64\x65\x62ug\x18\x03 \x01(\x08H\x00\x88\x01\x01\x12\x14\n\x07user_id\x18\x04 \x01(\tH\x01\x88\x01\x01\x42\x08\n\x06_debugB\n\n\x08_user_id\"b\n\x0fSamplesResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12/\n\x0bpredictions\x18\x03 \x03(\x0b\x32\x1a.grpc.bandit.v1.Prediction\"t\n\x0c\x42\x65tasRequest\x12\x10\n\x08item_ids\x18\x01 \x03(\t\x12\x12\n\nexplorable\x18\x02 \x01(\x08\x12\x12\n\x05\x64\x65\x62ug\x18\x03 \x01(\x08H\x00\x88\x01\x01\x12\x14\n\x07user_id\x18\x04 \x01(\tH\x01\x88\x01\x01\x42\x08\n\x06_debugB\n\n\x08_user_id\"`\n\rBetasResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12/\n\x0bpredictions\x18\x03 \x03(\x0b\x32\x1a.grpc.bandit.v1.Prediction\"C\n\rUpdateRequest\x12\x0f\n\x07item_id\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x02\x12\x12\n\nupdated_at\x18\x03 \x01(\x02\"0\n\x0eUpdateResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\" \n\rDeleteRequest\x12\x0f\n\x07item_id\x18\x01 \x01(\t\"0\n\x0e\x44\x65leteResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\x08\"\x13\n\x11HeuristicsRequest\"e\n\x12HeuristicsResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12/\n\x0bpredictions\x18\x03 \x03(\x0b\x32\x1a.grpc.bandit.v1.Prediction2\xdd\x04\n\x06\x42\x61ndit\x12@\n\x03get\x12\x1a.grpc.bandit.v1.GetRequest\x1a\x1b.grpc.bandit.v1.GetResponse\"\x00\x12\x43\n\x04rank\x12\x1b.grpc.bandit.v1.RankRequest\x1a\x1c.grpc.bandit.v1.RankResponse\"\x00\x12I\n\x06select\x12\x1d.grpc.bandit.v1.SelectRequest\x1a\x1e.grpc.bandit.v1.SelectResponse\"\x00\x12L\n\x07samples\x12\x1e.grpc.bandit.v1.SamplesRequest\x1a\x1f.grpc.bandit.v1.SamplesResponse\"\x00\x12\x46\n\x05\x62\x65tas\x12\x1c.grpc.bandit.v1.BetasRequest\x1a\x1d.grpc.bandit.v1.BetasResponse\"\x00\x12I\n\x06update\x12\x1d.grpc.bandit.v1.UpdateRequest\x1a\x1e.grpc.bandit.v1.UpdateResponse\"\x00\x12I\n\x06\x64\x65lete\x12\x1d.grpc.bandit.v1.DeleteRequest\x1a\x1e.grpc.bandit.v1.DeleteResponse\"\x00\x12U\n\nheuristics\x12!.grpc.bandit.v1.HeuristicsRequest\x1a\".grpc.bandit.v1.HeuristicsResponse\"\x00\x62\x06proto3'
+)
 
 
 
-_PREDICTION = DESCRIPTOR.message_types_by_name['Prediction']
-_GETREQUEST = DESCRIPTOR.message_types_by_name['GetRequest']
-_GETRESPONSE = DESCRIPTOR.message_types_by_name['GetResponse']
-_RANKREQUEST = DESCRIPTOR.message_types_by_name['RankRequest']
-_RANKRESPONSE = DESCRIPTOR.message_types_by_name['RankResponse']
-_SELECTREQUEST = DESCRIPTOR.message_types_by_name['SelectRequest']
-_SELECTRESPONSE = DESCRIPTOR.message_types_by_name['SelectResponse']
-_SAMPLESREQUEST = DESCRIPTOR.message_types_by_name['SamplesRequest']
-_SAMPLESRESPONSE = DESCRIPTOR.message_types_by_name['SamplesResponse']
-_BETASREQUEST = DESCRIPTOR.message_types_by_name['BetasRequest']
-_BETASRESPONSE = DESCRIPTOR.message_types_by_name['BetasResponse']
-_UPDATEREQUEST = DESCRIPTOR.message_types_by_name['UpdateRequest']
-_UPDATERESPONSE = DESCRIPTOR.message_types_by_name['UpdateResponse']
-_DELETEREQUEST = DESCRIPTOR.message_types_by_name['DeleteRequest']
-_DELETERESPONSE = DESCRIPTOR.message_types_by_name['DeleteResponse']
-_HEURISTICSREQUEST = DESCRIPTOR.message_types_by_name['HeuristicsRequest']
-_HEURISTICSRESPONSE = DESCRIPTOR.message_types_by_name['HeuristicsResponse']
+
+_PREDICTION = _descriptor.Descriptor(
+  name='Prediction',
+  full_name='grpc.bandit.v1.Prediction',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='item_id', full_name='grpc.bandit.v1.Prediction.item_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='score', full_name='grpc.bandit.v1.Prediction.score', index=1,
+      number=2, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='alpha', full_name='grpc.bandit.v1.Prediction.alpha', index=2,
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='beta', full_name='grpc.bandit.v1.Prediction.beta', index=3,
+      number=5, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='created_ts', full_name='grpc.bandit.v1.Prediction.created_ts', index=4,
+      number=6, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=39,
+  serialized_end=132,
+)
+
+
+_GETREQUEST = _descriptor.Descriptor(
+  name='GetRequest',
+  full_name='grpc.bandit.v1.GetRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='item_id', full_name='grpc.bandit.v1.GetRequest.item_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='explorable', full_name='grpc.bandit.v1.GetRequest.explorable', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=134,
+  serialized_end=183,
+)
+
+
+_GETRESPONSE = _descriptor.Descriptor(
+  name='GetResponse',
+  full_name='grpc.bandit.v1.GetResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='success', full_name='grpc.bandit.v1.GetResponse.success', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='error', full_name='grpc.bandit.v1.GetResponse.error', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='prediction', full_name='grpc.bandit.v1.GetResponse.prediction', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=185,
+  serialized_end=278,
+)
+
+
+_RANKREQUEST = _descriptor.Descriptor(
+  name='RankRequest',
+  full_name='grpc.bandit.v1.RankRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='count', full_name='grpc.bandit.v1.RankRequest.count', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='explorable', full_name='grpc.bandit.v1.RankRequest.explorable', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=280,
+  serialized_end=328,
+)
+
+
+_RANKRESPONSE = _descriptor.Descriptor(
+  name='RankResponse',
+  full_name='grpc.bandit.v1.RankResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='success', full_name='grpc.bandit.v1.RankResponse.success', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='error', full_name='grpc.bandit.v1.RankResponse.error', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='predictions', full_name='grpc.bandit.v1.RankResponse.predictions', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=330,
+  serialized_end=425,
+)
+
+
+_SELECTREQUEST = _descriptor.Descriptor(
+  name='SelectRequest',
+  full_name='grpc.bandit.v1.SelectRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='item_ids', full_name='grpc.bandit.v1.SelectRequest.item_ids', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='explorable', full_name='grpc.bandit.v1.SelectRequest.explorable', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='debug', full_name='grpc.bandit.v1.SelectRequest.debug', index=2,
+      number=3, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='user_id', full_name='grpc.bandit.v1.SelectRequest.user_id', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_debug', full_name='grpc.bandit.v1.SelectRequest._debug',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_user_id', full_name='grpc.bandit.v1.SelectRequest._user_id',
+      index=1, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=427,
+  serialized_end=544,
+)
+
+
+_SELECTRESPONSE = _descriptor.Descriptor(
+  name='SelectResponse',
+  full_name='grpc.bandit.v1.SelectResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='success', full_name='grpc.bandit.v1.SelectResponse.success', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='error', full_name='grpc.bandit.v1.SelectResponse.error', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='predictions', full_name='grpc.bandit.v1.SelectResponse.predictions', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=546,
+  serialized_end=643,
+)
+
+
+_SAMPLESREQUEST = _descriptor.Descriptor(
+  name='SamplesRequest',
+  full_name='grpc.bandit.v1.SamplesRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='item_ids', full_name='grpc.bandit.v1.SamplesRequest.item_ids', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='explorable', full_name='grpc.bandit.v1.SamplesRequest.explorable', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='debug', full_name='grpc.bandit.v1.SamplesRequest.debug', index=2,
+      number=3, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='user_id', full_name='grpc.bandit.v1.SamplesRequest.user_id', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_debug', full_name='grpc.bandit.v1.SamplesRequest._debug',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_user_id', full_name='grpc.bandit.v1.SamplesRequest._user_id',
+      index=1, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=645,
+  serialized_end=763,
+)
+
+
+_SAMPLESRESPONSE = _descriptor.Descriptor(
+  name='SamplesResponse',
+  full_name='grpc.bandit.v1.SamplesResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='success', full_name='grpc.bandit.v1.SamplesResponse.success', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='error', full_name='grpc.bandit.v1.SamplesResponse.error', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='predictions', full_name='grpc.bandit.v1.SamplesResponse.predictions', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=765,
+  serialized_end=863,
+)
+
+
+_BETASREQUEST = _descriptor.Descriptor(
+  name='BetasRequest',
+  full_name='grpc.bandit.v1.BetasRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='item_ids', full_name='grpc.bandit.v1.BetasRequest.item_ids', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='explorable', full_name='grpc.bandit.v1.BetasRequest.explorable', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='debug', full_name='grpc.bandit.v1.BetasRequest.debug', index=2,
+      number=3, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='user_id', full_name='grpc.bandit.v1.BetasRequest.user_id', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_debug', full_name='grpc.bandit.v1.BetasRequest._debug',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_user_id', full_name='grpc.bandit.v1.BetasRequest._user_id',
+      index=1, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=865,
+  serialized_end=981,
+)
+
+
+_BETASRESPONSE = _descriptor.Descriptor(
+  name='BetasResponse',
+  full_name='grpc.bandit.v1.BetasResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='success', full_name='grpc.bandit.v1.BetasResponse.success', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='error', full_name='grpc.bandit.v1.BetasResponse.error', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='predictions', full_name='grpc.bandit.v1.BetasResponse.predictions', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=983,
+  serialized_end=1079,
+)
+
+
+_UPDATEREQUEST = _descriptor.Descriptor(
+  name='UpdateRequest',
+  full_name='grpc.bandit.v1.UpdateRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='item_id', full_name='grpc.bandit.v1.UpdateRequest.item_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='grpc.bandit.v1.UpdateRequest.value', index=1,
+      number=2, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='updated_at', full_name='grpc.bandit.v1.UpdateRequest.updated_at', index=2,
+      number=3, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1081,
+  serialized_end=1148,
+)
+
+
+_UPDATERESPONSE = _descriptor.Descriptor(
+  name='UpdateResponse',
+  full_name='grpc.bandit.v1.UpdateResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='success', full_name='grpc.bandit.v1.UpdateResponse.success', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='error', full_name='grpc.bandit.v1.UpdateResponse.error', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1150,
+  serialized_end=1198,
+)
+
+
+_DELETEREQUEST = _descriptor.Descriptor(
+  name='DeleteRequest',
+  full_name='grpc.bandit.v1.DeleteRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='item_id', full_name='grpc.bandit.v1.DeleteRequest.item_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1200,
+  serialized_end=1232,
+)
+
+
+_DELETERESPONSE = _descriptor.Descriptor(
+  name='DeleteResponse',
+  full_name='grpc.bandit.v1.DeleteResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='success', full_name='grpc.bandit.v1.DeleteResponse.success', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='error', full_name='grpc.bandit.v1.DeleteResponse.error', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1234,
+  serialized_end=1282,
+)
+
+
+_HEURISTICSREQUEST = _descriptor.Descriptor(
+  name='HeuristicsRequest',
+  full_name='grpc.bandit.v1.HeuristicsRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1284,
+  serialized_end=1303,
+)
+
+
+_HEURISTICSRESPONSE = _descriptor.Descriptor(
+  name='HeuristicsResponse',
+  full_name='grpc.bandit.v1.HeuristicsResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='success', full_name='grpc.bandit.v1.HeuristicsResponse.success', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='error', full_name='grpc.bandit.v1.HeuristicsResponse.error', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='predictions', full_name='grpc.bandit.v1.HeuristicsResponse.predictions', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1305,
+  serialized_end=1406,
+)
+
+_GETRESPONSE.fields_by_name['prediction'].message_type = _PREDICTION
+_RANKRESPONSE.fields_by_name['predictions'].message_type = _PREDICTION
+_SELECTREQUEST.oneofs_by_name['_debug'].fields.append(
+  _SELECTREQUEST.fields_by_name['debug'])
+_SELECTREQUEST.fields_by_name['debug'].containing_oneof = _SELECTREQUEST.oneofs_by_name['_debug']
+_SELECTREQUEST.oneofs_by_name['_user_id'].fields.append(
+  _SELECTREQUEST.fields_by_name['user_id'])
+_SELECTREQUEST.fields_by_name['user_id'].containing_oneof = _SELECTREQUEST.oneofs_by_name['_user_id']
+_SELECTRESPONSE.fields_by_name['predictions'].message_type = _PREDICTION
+_SAMPLESREQUEST.oneofs_by_name['_debug'].fields.append(
+  _SAMPLESREQUEST.fields_by_name['debug'])
+_SAMPLESREQUEST.fields_by_name['debug'].containing_oneof = _SAMPLESREQUEST.oneofs_by_name['_debug']
+_SAMPLESREQUEST.oneofs_by_name['_user_id'].fields.append(
+  _SAMPLESREQUEST.fields_by_name['user_id'])
+_SAMPLESREQUEST.fields_by_name['user_id'].containing_oneof = _SAMPLESREQUEST.oneofs_by_name['_user_id']
+_SAMPLESRESPONSE.fields_by_name['predictions'].message_type = _PREDICTION
+_BETASREQUEST.oneofs_by_name['_debug'].fields.append(
+  _BETASREQUEST.fields_by_name['debug'])
+_BETASREQUEST.fields_by_name['debug'].containing_oneof = _BETASREQUEST.oneofs_by_name['_debug']
+_BETASREQUEST.oneofs_by_name['_user_id'].fields.append(
+  _BETASREQUEST.fields_by_name['user_id'])
+_BETASREQUEST.fields_by_name['user_id'].containing_oneof = _BETASREQUEST.oneofs_by_name['_user_id']
+_BETASRESPONSE.fields_by_name['predictions'].message_type = _PREDICTION
+_HEURISTICSRESPONSE.fields_by_name['predictions'].message_type = _PREDICTION
+DESCRIPTOR.message_types_by_name['Prediction'] = _PREDICTION
+DESCRIPTOR.message_types_by_name['GetRequest'] = _GETREQUEST
+DESCRIPTOR.message_types_by_name['GetResponse'] = _GETRESPONSE
+DESCRIPTOR.message_types_by_name['RankRequest'] = _RANKREQUEST
+DESCRIPTOR.message_types_by_name['RankResponse'] = _RANKRESPONSE
+DESCRIPTOR.message_types_by_name['SelectRequest'] = _SELECTREQUEST
+DESCRIPTOR.message_types_by_name['SelectResponse'] = _SELECTRESPONSE
+DESCRIPTOR.message_types_by_name['SamplesRequest'] = _SAMPLESREQUEST
+DESCRIPTOR.message_types_by_name['SamplesResponse'] = _SAMPLESRESPONSE
+DESCRIPTOR.message_types_by_name['BetasRequest'] = _BETASREQUEST
+DESCRIPTOR.message_types_by_name['BetasResponse'] = _BETASRESPONSE
+DESCRIPTOR.message_types_by_name['UpdateRequest'] = _UPDATEREQUEST
+DESCRIPTOR.message_types_by_name['UpdateResponse'] = _UPDATERESPONSE
+DESCRIPTOR.message_types_by_name['DeleteRequest'] = _DELETEREQUEST
+DESCRIPTOR.message_types_by_name['DeleteResponse'] = _DELETERESPONSE
+DESCRIPTOR.message_types_by_name['HeuristicsRequest'] = _HEURISTICSREQUEST
+DESCRIPTOR.message_types_by_name['HeuristicsResponse'] = _HEURISTICSRESPONSE
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
 Prediction = _reflection.GeneratedProtocolMessageType('Prediction', (_message.Message,), {
   'DESCRIPTOR' : _PREDICTION,
   '__module__' : 'protos.bandit_pb2'
@@ -154,44 +970,101 @@ HeuristicsResponse = _reflection.GeneratedProtocolMessageType('HeuristicsRespons
   })
 _sym_db.RegisterMessage(HeuristicsResponse)
 
-_BANDIT = DESCRIPTOR.services_by_name['Bandit']
-if _descriptor._USE_C_DESCRIPTORS == False:
 
-  DESCRIPTOR._options = None
-  _PREDICTION._serialized_start=39
-  _PREDICTION._serialized_end=132
-  _GETREQUEST._serialized_start=134
-  _GETREQUEST._serialized_end=183
-  _GETRESPONSE._serialized_start=185
-  _GETRESPONSE._serialized_end=278
-  _RANKREQUEST._serialized_start=280
-  _RANKREQUEST._serialized_end=328
-  _RANKRESPONSE._serialized_start=330
-  _RANKRESPONSE._serialized_end=425
-  _SELECTREQUEST._serialized_start=427
-  _SELECTREQUEST._serialized_end=544
-  _SELECTRESPONSE._serialized_start=546
-  _SELECTRESPONSE._serialized_end=643
-  _SAMPLESREQUEST._serialized_start=645
-  _SAMPLESREQUEST._serialized_end=763
-  _SAMPLESRESPONSE._serialized_start=765
-  _SAMPLESRESPONSE._serialized_end=863
-  _BETASREQUEST._serialized_start=865
-  _BETASREQUEST._serialized_end=981
-  _BETASRESPONSE._serialized_start=983
-  _BETASRESPONSE._serialized_end=1079
-  _UPDATEREQUEST._serialized_start=1081
-  _UPDATEREQUEST._serialized_end=1148
-  _UPDATERESPONSE._serialized_start=1150
-  _UPDATERESPONSE._serialized_end=1198
-  _DELETEREQUEST._serialized_start=1200
-  _DELETEREQUEST._serialized_end=1232
-  _DELETERESPONSE._serialized_start=1234
-  _DELETERESPONSE._serialized_end=1282
-  _HEURISTICSREQUEST._serialized_start=1284
-  _HEURISTICSREQUEST._serialized_end=1303
-  _HEURISTICSRESPONSE._serialized_start=1305
-  _HEURISTICSRESPONSE._serialized_end=1406
-  _BANDIT._serialized_start=1409
-  _BANDIT._serialized_end=2014
+
+_BANDIT = _descriptor.ServiceDescriptor(
+  name='Bandit',
+  full_name='grpc.bandit.v1.Bandit',
+  file=DESCRIPTOR,
+  index=0,
+  serialized_options=None,
+  create_key=_descriptor._internal_create_key,
+  serialized_start=1409,
+  serialized_end=2014,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='get',
+    full_name='grpc.bandit.v1.Bandit.get',
+    index=0,
+    containing_service=None,
+    input_type=_GETREQUEST,
+    output_type=_GETRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='rank',
+    full_name='grpc.bandit.v1.Bandit.rank',
+    index=1,
+    containing_service=None,
+    input_type=_RANKREQUEST,
+    output_type=_RANKRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='select',
+    full_name='grpc.bandit.v1.Bandit.select',
+    index=2,
+    containing_service=None,
+    input_type=_SELECTREQUEST,
+    output_type=_SELECTRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='samples',
+    full_name='grpc.bandit.v1.Bandit.samples',
+    index=3,
+    containing_service=None,
+    input_type=_SAMPLESREQUEST,
+    output_type=_SAMPLESRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='betas',
+    full_name='grpc.bandit.v1.Bandit.betas',
+    index=4,
+    containing_service=None,
+    input_type=_BETASREQUEST,
+    output_type=_BETASRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='update',
+    full_name='grpc.bandit.v1.Bandit.update',
+    index=5,
+    containing_service=None,
+    input_type=_UPDATEREQUEST,
+    output_type=_UPDATERESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='delete',
+    full_name='grpc.bandit.v1.Bandit.delete',
+    index=6,
+    containing_service=None,
+    input_type=_DELETEREQUEST,
+    output_type=_DELETERESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='heuristics',
+    full_name='grpc.bandit.v1.Bandit.heuristics',
+    index=7,
+    containing_service=None,
+    input_type=_HEURISTICSREQUEST,
+    output_type=_HEURISTICSRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_BANDIT)
+
+DESCRIPTOR.services_by_name['Bandit'] = _BANDIT
+
 # @@protoc_insertion_point(module_scope)

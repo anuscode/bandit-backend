@@ -6,7 +6,6 @@ from grpc_health.v1._async import HealthServicer
 from grpc_reflection.v1alpha import reflection
 from prometheus_client import start_http_server
 
-import clients.kafka
 from caches import TTL
 from configs import settings
 from connectors import Connector

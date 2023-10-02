@@ -1,13 +1,13 @@
 import abc
 import asyncio
 import json
+import uuid
 from typing import Dict
 
 import cachetools
 from prometheus_client import Counter
 
-import clients.kafka
-from clients.configs import settings
+import clients
 from loggers import logger
 from mab import Context
 from observable import Observable
@@ -15,8 +15,7 @@ from observable import Observable
 
 class Streamable(abc.ABC):
     kafka_counter_metric = Counter(
-        "kafka_messages_total",
-        "Count of total kafka messages.",
+        "kafka_messages_total", "Count of total kafka messages."
     )
 
     def __init__(self):
@@ -43,8 +42,8 @@ class ItemStream(Streamable, abc.ABC):
                 updated_at = x["created_ts"]
                 return Context(item_id_, value, updated_at)
 
-            async for message in clients.kafka.item.json.consume(
-                topic=settings.item_topic
+            async for message in clients.kafka.v1.json.consume(
+                topic=clients.configs.settings.item_topic, group_id=str(uuid.uuid4())
             ):
                 try:
                     message = message.value.decode("utf-8")
@@ -79,8 +78,8 @@ class TraceStream(Streamable, abc.ABC):
                 updated_at = x["created_ts"]
                 return Context(item_id_, value, updated_at)
 
-            async for message in clients.kafka.trace.json.consume(
-                topic=settings.trace_topic
+            async for message in clients.kafka.v1.json.consume(
+                topic=clients.configs.settings.trace_topic, group_id=str(uuid.uuid4())
             ):
                 try:
                     message = message.value.decode("utf-8")
@@ -95,9 +94,10 @@ class TraceStream(Streamable, abc.ABC):
 
                     context = to_context(message)
                     await self._updatable.publish(context)
-                    self.kafka_counter_metric.inc()
                 except Exception as e:
                     logger.error(e)
+                finally:
+                    self.kafka_counter_metric.inc()
 
         asyncio.create_task(implementation())
 

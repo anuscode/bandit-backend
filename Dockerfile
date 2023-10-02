@@ -1,4 +1,10 @@
-FROM python:3.10.8-slim-buster
+FROM python:3.10.11-slim-buster
+
+ARG GITHUB_TOKEN
+RUN echo $GITHUB_TOKEN
+
+RUN apt-get update && apt-get install -y git && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN git config --global url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
 
 RUN apt-get update \
   && apt-get install -y wget \
@@ -14,11 +20,14 @@ RUN apt-get -y update
 RUN apt-get -y install gcc
 
 COPY requirements.txt /opt/bandit-backend/requirements.txt
+
 RUN pip install --upgrade pip
 RUN pip install -r /opt/bandit-backend/requirements.txt
 
-COPY ../.. /opt/bandit-backend
+COPY . /opt/bandit-backend
 WORKDIR /opt/bandit-backend
+
+RUN pip install -r requirements.txt
 
 EXPOSE 80 50051
 
